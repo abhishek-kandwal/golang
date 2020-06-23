@@ -1,0 +1,45 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your name</mat-label>
+            <input matInput placeholder="pathnkm" formControlName="name" required>
+        </mat-form-field>
+
+        <div *ngIf="submitted && f.name.errors" >
+            <div *ngIf="userForm.errors.required">Name is required</div>
+        </div>
+
+    </div>
+
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" (blur)="checkEmail($event.target.value)" formControlName="email" email required>
+        </mat-form-field>
+        <div *ngIf="isExist">
+            <p style="color: red;">Email already exist try another one</p>
+        </div>
+        <div *ngIf="submitted && f.email.errors" >
+            dsfsf
+            <div *ngIf="f.email.errors.required">Title is required</div>
+        </div>
+
+    </div>
+
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Input disabled</mat-label>
+            <input [min]="minDate" [max]="maxDate" matInput [matDatepicker]="dp3" disabled formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+
+        </mat-form-field>
+
+        <div *ngIf="submitted && f.dob.errors" >
+            <div *ngIf="f.dob.errors.required">Title is required</div>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="!userForm.valid" >submit</button>
+</form>

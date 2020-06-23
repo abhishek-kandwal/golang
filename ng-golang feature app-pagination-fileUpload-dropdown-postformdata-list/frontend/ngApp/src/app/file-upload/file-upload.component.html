@@ -1,0 +1,18 @@
+<mat-form-field>
+    <mat-label>Employee List</mat-label>
+    <mat-select>
+        <mat-option *ngFor="let option of employeeList" value="option.Id" (click)="selectedOptions(option.Id)">
+            {{option.Name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div class="form-group">
+    <label for="file">Choose File</label>
+    <input type="file" id="file" (change)="handleFileInput($event.target.files); ">
+</div>
+<button (click)="uploadFileToActivity()" 
+
+>Upload File</button>
+{{fileStatus}}
+
+<!-- *ngIf="!isOptSetected && !isfileSelected" -->
