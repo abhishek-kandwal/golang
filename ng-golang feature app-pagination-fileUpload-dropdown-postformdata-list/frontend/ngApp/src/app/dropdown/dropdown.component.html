@@ -1,0 +1,14 @@
+<h4>Select your Location</h4>
+<mat-form-field>
+    <mat-label>Choose a state</mat-label>
+    <mat-select>
+        <mat-option *ngFor="let state of states" value="state.Id" (click)="getCities(state.Id)">{{state.Name}}</mat-option>
+    </mat-select>
+</mat-form-field>
+<br>
+<mat-form-field>
+    <mat-label>Choose a city</mat-label>
+    <mat-select [disabled]="disableSCity">
+        <mat-option *ngFor="let city of cities" value="city.Id">{{city.Name}}</mat-option>
+    </mat-select>
+</mat-form-field>
