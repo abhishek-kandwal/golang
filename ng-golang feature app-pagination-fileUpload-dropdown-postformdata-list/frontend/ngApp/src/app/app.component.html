@@ -1,0 +1,56 @@
+<button (click)="buttonhit('pagination')" >pagination</button>
+<button (click)="buttonhit('upload')" >fileUpload</button>
+<button (click)="buttonhit('dropdown')" >dropdown</button>
+<button (click)="buttonhit('getDetails')" >user Details</button>
+<button (click)="buttonhit('postDetails')" >Post user Details</button>
+
+<app-dropdown *ngIf="isDropDownSelected" ></app-dropdown>
+<div *ngIf="isPaginationSelected">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <!--- Note that these columns can be defined in any order.
+      The actual rendered columns are set as a property on the row definition" -->
+      
+      <!-- Position Column -->
+      
+      
+      <!-- Name Column -->
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+      </ng-container>
+      
+      <!-- Weight Column -->
+      <ng-container matColumnDef="conds">
+        <th mat-header-cell *matHeaderCellDef> conds </th>
+        <td mat-cell *matCellDef="let element"> {{element.Conds}} </td>
+      </ng-container>
+      
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="humidity">
+        <th mat-header-cell *matHeaderCellDef> humidity </th>
+        <td mat-cell *matCellDef="let element"> {{element.Humidity}} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="temp">
+        <th mat-header-cell *matHeaderCellDef> temp </th>
+        <td mat-cell *matCellDef="let element"> {{element.Temp}} </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+      
+    </table>
+    
+    <button (click)="previous()" [disabled]="!isValid">previous</button>
+    
+    <button (click)="next()" [disabled]="!isnext">next</button>
+  </div>
+  
+  <div *ngIf="isfilupload">
+    <app-file-upload></app-file-upload>
+  </div>
+  
+  <app-userdetails *ngIf="isGetDetails"></app-userdetails>
+  <app-postuserdetails *ngIf="isPostDetails" ></app-postuserdetails>
